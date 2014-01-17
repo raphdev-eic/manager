@@ -1,0 +1,12 @@
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+[user]
+        name = raphdev
+        email = raphaelsampan@outlook.fr
+[alias]
+        ci = commit
+        co = checkout
+        st = status
+        br = branch
