@@ -1,9 +1,6 @@
-<ul id="notyfy_container_top" class="notyfy_container i-am-new">
-  <li class="notyfy_wrapper notyfy_success" style="cursor: pointer;">
-	<div id="notyfy_74839448095550820" class="notyfy_bar">
-		<div class="notyfy_message">
-			<span class="notyfy_text">You <strong> successfully </strong> <?php echo $message; ?>  Cliquez ici ! pour refermer </span>
-		</div>
-	</div>
-  </li>
-</ul>
+<div class="alert alert-success fade in">
+     <button data-dismiss="alert" class="close close-sm" type="button">
+         <i class="fa fa-times"></i>
+     </button>
+     <strong>Succes!</strong> <?php echo $message; ?>
+</div>

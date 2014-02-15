@@ -9,14 +9,19 @@ class UsersController extends AppController{
 
      public function UserList(){
         $listuser = $this->User->find('all',array(
+          'contain'=>array('ParentUser'=>array(
+             'fields'=>array('username','email','firstname','lastname'),
+            )),
+           'fields'=>array('id','email','firstname','lastname','status','code'),
            'conditions'=>array('User.status <>'=>1),
            'order'=>array('User.created'=>'Desc')
           ));
-        if(!empty($listuser)){
+        //debug($listuser); die();
+       // if(!empty($listuser)){
           $this->set(compact('listuser'));
-        }else{
-          throw new NotFoundException("La liste des utilisateur est indisponible", 404);
-        }
+       // }/*else{
+          /*throw new NotFoundException("La liste des utilisateur est indisponible", 404);
+        }*/
      }
 
     public function UserAdd(){
@@ -128,6 +133,16 @@ class UsersController extends AppController{
  /**
  * desactivation d'un user de type investisseur
  */
+   public function AllListUser(){
+      $alluser = $this->User->find('all',array(
+        'contain'=>array('Rank','Team','Role','Program'=>array('fields'=>array('name')),'Country'),
+         'conditions'=>array('User.status'=>1),
+         'order'=>array('User.created'=>'Desc')
+        ));
+      if(!empty($alluser)){
+        $this->set(compact('alluser'));
+      }
+   }
 
    public function DesactiveUser( $id = null){
     debug($id);
