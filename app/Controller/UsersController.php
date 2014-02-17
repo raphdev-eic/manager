@@ -131,7 +131,7 @@ class UsersController extends AppController{
    }
 
  /**
- * desactivation d'un user de type investisseur
+ * Liste de tous les utilisateurs
  */
    public function AllListUser(){
       $alluser = $this->User->find('all',array(

@@ -74,4 +74,28 @@ class TransactionsController extends AppController{
 		            $this->Session->setFlash('Une erreur est survenu lors de la validation','error');
 		   }
 
+
+		   public function AddTransaction($id = null){
+		   	if(!$id){
+		   		throw new BadRequestException("Mauvaise requete veuillez preciser", 403);
+		   	}
+		   	 $years = $this->Transaction->getYears();
+		   	 $operations = $this->Transaction->getOperations();
+             $this->set(compact('years','operations'));
+
+             if(!empty($this->request->data)){
+             	$d = $this->request->data;
+             	$d['Transaction']['numero'] = $this->Transaction->User->generateKeyInvoce();
+             	$d['Transaction']['status'] = 0;
+             	$d['Transaction']['user_id'] = $id;
+             	$this->Transaction->create();
+             	if($this->Transaction->save($d)){
+             		$this->Session->write('usertransid',$id);
+             		$this->Session->setFlash('transaction effectuer avec success', 'success');
+             		$this->redirect(array('controller'=>'Cashflows','action'=>'CashflowAdd'));
+             	}
+               $this->Session->setFlash('Transaction echouer', 'error');
+             }
+		   }
+
 }

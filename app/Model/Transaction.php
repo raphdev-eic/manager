@@ -56,18 +56,22 @@ class Transaction extends AppModel {
 			'foreignKey' => 'year_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => 'Year.id Asc'
 		)
 
 	);
 
-	/**
-	 * afterSave callback
-	 *
-	 * @param $created boolean
-	 * @param $options array
-	 * @return void
-	 */
+    public function getYears(){
+    	$y = $this->Year->find('list',array(
+          'fields'=>array('Year.year')
+    	));
+    	return $y;
+    }
+
+    public function getOperations(){
+    	$y = $this->Operation->find('list');
+    	return $y;
+    }
 
 
 	/**

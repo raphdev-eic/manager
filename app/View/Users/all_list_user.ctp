@@ -26,10 +26,10 @@
                                     <th>Date d'ajout</th>
                                     <th>Date d'expiration</th>
                                     <th>Club d'investissement</th>
-                                    <th>Programme</th>
-                                    <th>Nombre de parts</th>
                                     <th>Pays</th>
                                     <th class="hidden-phone">Détail</th>
+                                    <th class="hidden-phone">Crediter</th>
+                                    <th class="hidden-phone">Cashflow</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,10 +41,12 @@
                                         <td><span class="label label-success"><?php echo $t['User']['date_debut']; ?></span></td>
                                         <td><span class="label label-danger"><?php echo $t['User']['date_expire']; ?></span></td>
                                         <td><?php echo $t['Team']['name']; ?></td>
-                                        <td class="center hidden-phone"><?php echo $t['Program']['name']; ?></td>
-                                        <td class="center hidden-phone"><span class="label label-success"><?php echo $t['User']['parts']; ?></span></td>
                                         <td class="center hidden-phone"><?php echo $t['Country']['name']; ?></td>
                                         <td class="center hidden-phone"><a href="<?php echo $this->Html->url(array('controller' => 'Users', 'action' => 'ViewUser',$t['User']['id'])); ?>" class="btn btn-danger"> Voir </a></td>
+                                        <td class="center hidden-phone"><a href="<?php echo $this->Html->url(array('controller' => 'Transactions', 'action' => 'AddTransaction',$t['User']['id'])); ?>" class="btn btn-info"> Crediter </a>
+                                        </td>
+                                        <td class="center hidden-phone"><a href="<?php echo $this->Html->url(array('controller' => 'Cashflows', 'action' => 'CashflowAdd',$t['User']['id'])); ?>" class="btn btn-success"> Cashflow </a>
+                                        </td>
                                     </tr>
                                 <?php endforeach ?>
                             </tbody>
@@ -56,9 +58,10 @@
                                     <th>Date d'ajout</th>
                                     <th>Date d'expiration</th>
                                     <th>Club d'investissement</th>
-                                    <th>Programme</th>
-                                    <th>Nombre de parts</th>
+                                    <th>Pays</th>
                                     <th class="hidden-phone">Détail</th>
+                                    <th class="hidden-phone">Crediter</th>
+                                    <th class="hidden-phone">Cashflow</th>
                                 </tr>
                             </tfoot>
                         </table>

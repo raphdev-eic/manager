@@ -344,7 +344,7 @@ class User extends AppModel {
 
 		'Cashflow' => array(
 
-			'className' => 'Last',
+			'className' => 'Cashflow',
 
 			'foreignKey' => 'user_id',
 
@@ -370,7 +370,7 @@ class User extends AppModel {
 
 		'Ucashflow' => array(
 
-			'className' => 'Last',
+			'className' => 'Ucashflow',
 
 			'foreignKey' => 'user_id',
 
@@ -771,6 +771,33 @@ class User extends AppModel {
             return $resultat;
 
     }
+
+/**
+ * [generateKeyInvoce description]
+ * @param  integer $num [description]
+ * @return [type]       [description]
+ */
+		public function generateKeyInvoce($num = 10){
+
+				$resultat = array();
+
+				$user ="";
+
+				$invoce = "0123456789";
+
+				srand((double)microtime()*1000000);
+
+					for($i=0; $i<$num; $i++) {
+
+					$user .= $invoce[rand()%strlen($invoce)];
+
+					}
+
+				$resultat = $user;
+
+				return $resultat;
+
+		}
 
 
 
